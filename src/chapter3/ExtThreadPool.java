@@ -5,9 +5,6 @@ import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by 13 on 2017/5/5.
- */
 public class ExtThreadPool {
 
     public static class MyTask implements Runnable {
@@ -19,7 +16,7 @@ public class ExtThreadPool {
 
         @Override
         public void run() {
-            System.out.println("ÕıÔÚÖ´ĞĞ:Thread ID:" + Thread.currentThread().getId() + ",Task Name:" + name);
+            System.out.println("æ­£åœ¨æ‰§è¡Œ:Thread ID:" + Thread.currentThread().getId() + ",Task Name:" + name);
 
             try {
                 Thread.sleep(100);
@@ -29,24 +26,28 @@ public class ExtThreadPool {
         }
     }
 
-
     public static void main(String args[]) throws InterruptedException {
-        ExecutorService executorService = new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingDeque<Runnable>()) {
+        ExecutorService executorService = new ThreadPoolExecutor(
+                5,
+                5,
+                0L,
+                TimeUnit.MILLISECONDS,
+                new LinkedBlockingDeque<Runnable>()) {
             protected void beforeExecute(Thread t, Runnable r) {
-                System.out.println("×¼±¸Ö´ĞĞ:" + ((MyTask) r).name);
+                System.out.println("å‡†å¤‡æ‰§è¡Œï¼š" + ((MyTask) r).name);
             }
 
             protected void afterExecute(Thread t, Runnable r) {
-                System.out.println("Ö´ĞĞÍê³É:" + ((MyTask) r).name);
+                System.out.println("æ‰§è¡Œå®Œæˆ" + ((MyTask) r).name);
             }
 
             protected void terminated() {
-                System.out.println("Ïß³Ì³ØÍË³ö!");
+                System.out.println("çº¿ç¨‹æ± é€€å‡ºï¼");
             }
         };
 
         for (int i = 0; i < 5; i++) {
-            MyTask task = new MyTask("TASK-GEYM-" + i);
+            MyTask task = new MyTask("TASK--" + i);
             executorService.execute(task);
             Thread.sleep(10);
         }
