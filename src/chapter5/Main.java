@@ -6,19 +6,17 @@ package chapter5;
 public class Main {
     public static void main(String args[]) {
         Client client = new Client();
-        //ÕâÀï»áÁ¢¼´·µ»Ø,ÒòÎªµÃµ½µÄÊÇFutureData¶ø²»ÊÇRealData
+        //
         Data data = client.request("name");
-        System.out.println("ÇëÇóÍê±Ï");
+        System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 
         try {
 
-            //ÕâÀïÓÃÒ»¸ösleep´úÌæÁË¶ÔÆäËûÒµÎñÂß¼­µÄ´¦Àí
-            //ÔÚ´¦ÀíÕâĞ©ÒµÎñÂß¼­µÄ¹ı³ÌÖĞ,RealData±»´´½¨,´Ó¶ø³ä·ÖÀûÓÃÁËµÈ´ıÊ±¼ä
+
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        //Ê¹ÓÃÕæÊµµÄÊı¾İ
-        System.out.println("Êı¾İ=" + data.getResult());
+        //Ê¹ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  System.out.println("ï¿½ï¿½ï¿½ï¿½=" + data.getResult());
     }
 }
